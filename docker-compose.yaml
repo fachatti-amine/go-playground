@@ -1,13 +1,12 @@
-version: "3"
+version: '3.9'
 services:
-  app:
-    container_name: go
-    image: golang:latest
+  go-playground:
+    container_name: go-app
     ports:
-      - "8080:80"
-    restart: unless-stopped
+      - '8080:8080'
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: dev
     volumes:
-      - ./app:/opt/app
-    working_dir: /opt/app
-
-
+      - .:/app
